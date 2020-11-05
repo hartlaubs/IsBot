@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <AssemblyName>IsBot</AssemblyName>
+    <RootNamespace>Damurka</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Damurka</Authors>
+    <Company>Hartlaubs</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Detect bots/crawlers/spiders using the user agent string.</Description>
+    <PackageTags>bot;crawlers;spiders;googlebot;useragent;</PackageTags>
+    <RepositoryType>github</RepositoryType>
+    <RepositoryUrl>https://github.com/hartlaubs/IsBot</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="list.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="list.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+  </ItemGroup>
+
+</Project>
