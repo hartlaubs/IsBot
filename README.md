@@ -5,37 +5,39 @@ C# module that detects bots/crawlers/spiders via the user agent. This is a port 
 ### Simple detection
 
 ```csharp
+using Damurka;
+
 // User Agent string
-IsBot.Matches("Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)") // true
-IsBot.Matches("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36") // false
+IsBot.Matches("Mozilla/5.0 (iPhone; CPU iPhone OS 6_0 like Mac OS X) AppleWebKit/536.26 (KHTML, like Gecko) Version/6.0 Mobile/10A5376e Safari/8536.25 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"); // true
+IsBot.Matches("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"); // false
 ```
 
 ### Add crawler user agents
 Add rules to user agent match RegExp
 
 ```csharp
-IsBot.Matches('Mozilla/5.0') // false
-IsBot.Extend([
+IsBot.Matches('Mozilla/5.0'); // false
+IsBot.Extend(
     'istat',
     '^mozilla/\\d\\.\\d$'
-])
-IsBot.Matches('Mozilla/5.0') // true
+);
+IsBot.Matches('Mozilla/5.0'); // true
 ```
 
 ### Remove matches of known crawlers
 Remove rules to user agent match RegExp (see existing rules in `list.json` file)
 
 ```csharp
-IsBot.Matches('Chrome-Lighthouse') // true
-IsBot.Exclude(['chrome-lighthouse']) // pattern is case insensitive
-IsBot.Matches('Chrome-Lighthouse') // false
+IsBot.Matches('Chrome-Lighthouse'); // true
+IsBot.Exclude('chrome-lighthouse'); // pattern is case insensitive
+IsBot.Matches('Chrome-Lighthouse'); // false
 ```
 
 ### Verbose result
 Return the respective match for bot user agent rule
 
 ```csharp
-IsBot.Find('Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0 DejaClick/2.9.7.2') // 'DejaClick'
+IsBot.Find('Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0 DejaClick/2.9.7.2'); // 'DejaClick'
 ```
 
 ## Definitions
